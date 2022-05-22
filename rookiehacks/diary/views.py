@@ -34,4 +34,8 @@ def add_report():
     new_dict["Rating"] = user_rating
     new_dict["Content"] = user_content
     new_dict["Date posted"] = date.today()
+    report.append(new_dict)
+    pretty.pprint(new_dict)
+
+def show_report(report):
     pretty.pprint(report)
