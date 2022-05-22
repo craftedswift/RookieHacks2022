@@ -1,6 +1,8 @@
 from django.shortcuts import render
+import pprint
 from datetime import date
 
+pretty = pprint.PrettyPrinter(width=30, sort_dicts=False)
 report = [
     {
         'rating' : 7, 
@@ -26,8 +28,10 @@ def about(request):
     return render(request, 'diary/about.html')
 
 def add_report():
-    user_rating = int(input("How do you feel out of 10? "))
+    new_dict = {}
+    user_rating = int(input("How do you feel from 1-10? "))
     user_content = str(input("Why do you feel this way? "))
-    report["rating"] = user_rating
-    report["content"] = user_content
-    report["date_posted"] = date.today()
+    new_dict["Rating"] = user_rating
+    new_dict["Content"] = user_content
+    new_dict["Date posted"] = date.today()
+    pretty.pprint(report)
