@@ -25,15 +25,15 @@ def about(request):
     return render(request, 'diary/about.html')
 
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def add_report(request):
     new_dict = {}
     print(request.data)
     #user_rating = int(input("How do you feel from 1-10? "))
     #user_content = str(input("Why do you feel this way? "))
-    new_dict["Rating"] = int(request.data["rating"])
-    new_dict["Content"] = request.data[str("description")]
-    new_dict["Date posted"] = date.today()
+    new_dict["rating"] = int(request.data["rating"])
+    new_dict["content"] = request.data[str("description")]
+    new_dict["date_posted"] = date.today()
     report.append(new_dict)
     #pretty.pprint(new_dict)
 

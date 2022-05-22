@@ -5,11 +5,8 @@
 </head>
 <body>
     <h1>Reports Home</h1>
-{% for report in reports %}
-    <h2>I was feeling a {{ report.rating }} on {{ report.date_posted }}</h2>
-    <p>{{ report.content }}</p>
-    {% endfor %}
-    <form action="http://localhost:8000/api/journal" method="POST">
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+    <form action="http://localhost:8000/api/journal" method="POST" target="dummyframe" onsubmit="setTimeout(function(){window.location.reload();},10);">
         {% csrf_token %}
         <label>
             How are you feeling?<br>
@@ -17,6 +14,11 @@
             <input type="text" name="description" placeholder="Describe how you're feeling"/><br>
             <button type="submit">Submit</button>  
         </label>
-      </form>
+      </form>    
+{% for report in reports %}
+    <h2>I was feeling a {{ report.rating }} on {{ report.date_posted }}</h2>
+    <p>{{ report.content }}</p>
+    {% endfor %}
+
 </body>
 </html>
