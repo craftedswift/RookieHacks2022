@@ -24,3 +24,10 @@ def home(request):
 
 def about(request):
     return render(request, 'diary/about.html')
+
+def add_report():
+    user_rating = int(input("How do you feel out of 10? "))
+    user_content = str(input("Why do you feel this way? "))
+    report["rating"] = user_rating
+    report["content"] = user_content
+    report["date_posted"] = date.today()
