@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports Home</title>
+</head>
+<body>
+    <h1>Reports Home!</h1>
+{% for report in reports %}
+    <h2>I was feeling a {{ report.rating }} on {{ report.date_posted }}</h2>
+    <p>{{ report.content }}</p>
+    {% endfor %}
+    <input type="text" placeholder="Enter your email for report reminders!" />
+</body>
+</html>
