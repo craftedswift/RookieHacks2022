@@ -9,12 +9,12 @@
     <h2>I was feeling a {{ report.rating }} on {{ report.date_posted }}</h2>
     <p>{{ report.content }}</p>
     {% endfor %}
-    <form action="http://localhost:8000/" method="POST">
+    <form action="http://localhost:8000/api/journal" method="POST">
         {% csrf_token %}
         <label>
             How are you feeling?<br>
-            <input type="text" placeholder="On a scale from 1-10", required/><br>
-            <input type="text" placeholder="Describe how you're feeling"/><br>
+            <input type="text" name="rating" placeholder="On a scale from 1-10", required/><br>
+            <input type="text" name="description" placeholder="Describe how you're feeling"/><br>
             <button type="submit">Submit</button>  
         </label>
       </form>
