@@ -4,11 +4,19 @@
     <title>Reports Home</title>
 </head>
 <body>
-    <h1>Reports Home!</h1>
+    <h1>Reports Home</h1>
 {% for report in reports %}
     <h2>I was feeling a {{ report.rating }} on {{ report.date_posted }}</h2>
     <p>{{ report.content }}</p>
     {% endfor %}
-    <input type="text" placeholder="Enter your email for report reminders!" />
+    <form action="http://localhost:8000/" method="POST">
+        {% csrf_token %}
+        <label>
+            How are you feeling?<br>
+            <input type="text" placeholder="On a scale from 1-10", required/><br>
+            <input type="text" placeholder="Describe how you're feeling"/><br>
+            <button type="submit">Submit</button>  
+        </label>
+      </form>
 </body>
 </html>

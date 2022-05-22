@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import pprint
 from datetime import date
+from django.views.decorators.csrf import csrf_exempt
 
 pretty = pprint.PrettyPrinter(width=30, sort_dicts=False)
 report = [
@@ -9,11 +10,6 @@ report = [
         'content' : 'I want to live',
         'date_posted' : date.today()
     },
-    {
-        'rating' : 2, 
-        'content' : 'I want to die',
-        'date_posted' :"September 2013"
-    }
 ]
 # Create your views here.
 def home(request):
@@ -27,7 +23,8 @@ def home(request):
 def about(request):
     return render(request, 'diary/about.html')
 
-def add_report():
+@csrf_exempt
+def add_report(request):
     new_dict = {}
     user_rating = int(input("How do you feel from 1-10? "))
     user_content = str(input("Why do you feel this way? "))
@@ -35,7 +32,9 @@ def add_report():
     new_dict["Content"] = user_content
     new_dict["Date posted"] = date.today()
     report.append(new_dict)
-    pretty.pprint(new_dict)
+    #pretty.pprint(new_dict)
+
+    return render(request, "diary/home.html", report)
 
 def show_report(report):
     pretty.pprint(report)
