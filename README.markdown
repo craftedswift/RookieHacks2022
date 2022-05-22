@@ -1,4 +1,4 @@
-# Mental CheckIn
+# Mental Check\-In
 
 ## Installation
 
